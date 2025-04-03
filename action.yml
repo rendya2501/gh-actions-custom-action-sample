@@ -8,6 +8,7 @@ inputs:
 outputs:
   result:
     description: "Processed message"
+    value: ${{ steps.set-result.outputs.result }}
 runs:
   using: "composite"
   steps:
@@ -15,8 +16,8 @@ runs:
       run: bash ${{ github.action_path }}/entrypoint.sh "${{ inputs.message }}"
       shell: bash
     - name: Return message
-      run: echo "result=${{ inputs.message }} (hogehoge)" >> $GITHUB_ENV
-      shell: bash
+      id: set-result
+      run: echo "result=${{ inputs.message }} (hogehoge)" >> $GITHUB_OUTPUT
 
     # - run: bash ${{ github.action_path }}/entrypoint.sh "${{ inputs.message }}"
     #   shell: bash
