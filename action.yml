@@ -6,8 +6,11 @@ inputs:
     required: false
     default: "Hello World"
 outputs:
-  result:
-    description: "Processed message"
+  script_result:
+    description: "Output from script"
+    value: ${{ steps.process_message.outputs.script_result }}
+  echo_result:
+    description: "Output from echo"
     value: ${{ steps.set-result.outputs.result }}
 runs:
   using: "composite"
@@ -17,7 +20,7 @@ runs:
       shell: bash
     - name: Return message
       id: set-result
-      run: echo "result=${{ inputs.message }} (hogehoge)" >> $GITHUB_OUTPUT
+      run: echo "echo_result=${{ inputs.message }} (hogehoge)" >> $GITHUB_OUTPUT
       shell: bash
       
     # - run: bash ${{ github.action_path }}/entrypoint.sh "${{ inputs.message }}"
