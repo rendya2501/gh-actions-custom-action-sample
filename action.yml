@@ -1,14 +1,20 @@
 name: "Hello World Custom Action"
 description: "Outputs a custom message"
-author: "your-username"
 inputs:
   message:
     description: "Message to print"
     required: false
     default: "Hello World"
-outputs: {}  
+outputs:
+  result:
+    description: "Processed message"
 runs:
   using: "composite"
   steps:
-    - run: bash ${{ github.action_path }}/entrypoint.sh "${{ inputs.message }}"
+    # - run: bash ${{ github.action_path }}/entrypoint.sh "${{ inputs.message }}"
+    #   shell: bash
+    - name: Process message
+      run: |
+        echo "Received message: ${{ inputs.message }}"
+        echo "result=${{ inputs.message }} (processed)" >> $GITHUB_ENV
       shell: bash
