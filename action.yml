@@ -18,7 +18,8 @@ runs:
     - name: Return message
       id: set-result
       run: echo "result=${{ inputs.message }} (hogehoge)" >> $GITHUB_OUTPUT
-
+      shell: bash
+      
     # - run: bash ${{ github.action_path }}/entrypoint.sh "${{ inputs.message }}"
     #   shell: bash
     # - name: Process message
