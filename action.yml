@@ -11,7 +11,7 @@ outputs:
     value: ${{ steps.process_message.outputs.script_result }}
   echo_result:
     description: "Output from echo"
-    value: ${{ steps.set-result.outputs.result }}
+    value: ${{ steps.set-result.outputs.echo_result }}
 runs:
   using: "composite"
   steps:
