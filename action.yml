@@ -1,0 +1,14 @@
+name: "Hello World Custom Action"
+description: "Outputs a custom message"
+author: "your-username"
+inputs:
+  message:
+    description: "Message to print"
+    required: false
+    default: "Hello World"
+outputs: {}  
+runs:
+  using: "composite"
+  steps:
+    - run: bash ${{ github.action_path }}/entrypoint.sh "${{ inputs.message }}"
+      shell: bash
