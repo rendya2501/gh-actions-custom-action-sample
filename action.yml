@@ -11,10 +11,16 @@ outputs:
 runs:
   using: "composite"
   steps:
+    - run: bash ${{ github.action_path }}/entrypoint.sh "${{ inputs.message }}"
+      shell: bash
+    - name: Process message
+      run: echo "result=${{ inputs.message }} (hogehoge)" >> $GITHUB_ENV
+      shell: bash
+
     # - run: bash ${{ github.action_path }}/entrypoint.sh "${{ inputs.message }}"
     #   shell: bash
-    - name: Process message
-      run: |
-        echo "Received message: ${{ inputs.message }}"
-        echo "result=${{ inputs.message }} (processed)" >> $GITHUB_ENV
-      shell: bash
+    # - name: Process message
+    #   run: |
+    #     echo "Received message: ${{ inputs.message }}"
+    #     echo "result=${{ inputs.message }} (processed)" >> $GITHUB_ENV
+    #   shell: bash
