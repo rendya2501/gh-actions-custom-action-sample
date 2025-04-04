@@ -1,4 +1,4 @@
-# Hello World Custom GitHub Action
+# GitHub Actions Customr Action Sample
 
 このリポジトリでは、**任意のメッセージを出力するカスタム GitHub Composite Action** を定義しています。  
 外部リポジトリから呼び出すことで、再利用可能なメッセージ出力処理を提供します。
