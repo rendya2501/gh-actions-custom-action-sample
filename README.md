@@ -5,16 +5,9 @@
 
 ## 📌 概要
 
+- Aリポジトリ（[`gh-actions-runner-sample`](https://github.com/rendya2501/gh-actions-runner-sample)）のワークフロー実行側から呼び出されます  
 - `with:` で渡されたメッセージをログに出力  
 - `GITHUB_OUTPUT` に値を設定し、呼び出し元のワークフローで参照可能  
-
-## 📁 ファイル構成
-
-```
-gh-actions-custom-action-sample/
-├── action.yml
-└── entrypoint.sh
-```
 
 ## 🗙 `action.yml`
 
