@@ -22,12 +22,6 @@ runs:
     - name: Return message
       id: set-result
       run: 'echo "echo_result=Echo Processed: ${{ inputs.message }} (hogehoge)" >> $GITHUB_OUTPUT'
+      #run: echo "echo_result=${{ inputs.message }} (hogehoge)" >> $GITHUB_OUTPUT
       shell: bash
       
-    # - run: bash ${{ github.action_path }}/entrypoint.sh "${{ inputs.message }}"
-    #   shell: bash
-    # - name: Process message
-    #   run: |
-    #     echo "Received message: ${{ inputs.message }}"
-    #     echo "result=${{ inputs.message }} (processed)" >> $GITHUB_ENV
-    #   shell: bash
