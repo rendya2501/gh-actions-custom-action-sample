@@ -1,7 +1,7 @@
 ﻿string result = "Hello from repository B!";
 
 // GitHub Actions の output に値を設定
-string githubOutput = Environment.GetEnvironmentVariable("GITHUB_OUTPUT");
+string? githubOutput = Environment.GetEnvironmentVariable("GITHUB_OUTPUT");
 if (!string.IsNullOrEmpty(githubOutput))
 {
     using (StreamWriter writer = new StreamWriter(githubOutput, true))
@@ -10,4 +10,4 @@ if (!string.IsNullOrEmpty(githubOutput))
     }
 }
 
-Console.WriteLine($"Set output value: {result}");
+Console.WriteLine($"Set output value: {result}:{args[0]}");
