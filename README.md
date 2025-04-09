@@ -1,4 +1,4 @@
-# GitHub Actions Customr Action Sample
+# GitHub Actions Custom Action Sample (Bリポジトリ)
 
 このリポジトリでは、**任意のメッセージを出力するカスタム GitHub Composite Action** を定義しています。  
 外部リポジトリから呼び出すことで、再利用可能なメッセージ出力処理を提供します。
