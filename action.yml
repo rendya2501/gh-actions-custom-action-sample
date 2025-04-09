@@ -37,6 +37,4 @@ runs:
     - name: Run C# code
       id: csharp
       shell: bash
-      run: |
-        cd ${{ github.action_path }}
-        dotnet run --project ./src/MyProject.csproj
+      run: dotnet run --project ${{ github.action_path }}/MyProject.csproj
