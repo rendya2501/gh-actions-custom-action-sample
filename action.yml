@@ -37,6 +37,4 @@ runs:
     - name: Run C# code
       id: csharp
       shell: bash
-      run: |
-        dotnet run --project ${{ github.action_path }}/MyProject.csproj --"${{ inputs.message }}"
-      # echo "result=${{ steps.csharp-output.outputs.result }}" >> $GITHUB_OUTPUT
+      run: dotnet run --project ${{ github.action_path }}/MyProject.csproj "${{ inputs.message }}"
