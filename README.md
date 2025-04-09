@@ -28,6 +28,9 @@ outputs:
   echo_result:
     description: "Output from echo"
     value: ${{ steps.set-result.outputs.echo_result }}
+  csharp_result:
+    description: 'The result from C# code'
+    value: ${{ steps.csharp.outputs.csharp_result }}
 
 runs:
   using: "composite"
@@ -41,6 +44,16 @@ runs:
       id: set-result
       run: echo "echo_result=Echo Processed: ${{ inputs.message }} (hogehoge)" >> $GITHUB_OUTPUT
       shell: bash
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '8.0'
+
+    - name: Run C# code
+      id: csharp
+      shell: bash
+      run: dotnet run --project ${{ github.action_path }}/MyProject.csproj "${{ inputs.message }}"
 ```
 
 ## 🖋 `entrypoint.sh`
@@ -55,6 +68,26 @@ echo "Received message: $MESSAGE"
 
 echo "script_result=Script Processed: $MESSAGE" >> "$GITHUB_OUTPUT"
 ```
+
+## csharpからの出力
+
+``` cs
+string result = "Hello from repository B!";
+
+// GitHub Actions の output に値を設定
+string? githubOutput = Environment.GetEnvironmentVariable("GITHUB_OUTPUT");
+if (!string.IsNullOrEmpty(githubOutput))
+{
+    using (StreamWriter writer = new StreamWriter(githubOutput, true))
+    {
+        writer.WriteLine($"csharp_result=csharp Processed:{result} {args[0]}");
+    }
+}
+
+Console.WriteLine($"Set output value: {result} {args[0]}");
+```
+
+<https://claude.ai/share/ce0c5d55-cf92-431e-a124-9263273e7356>  
 
 ## ✅ 出力内容
 
@@ -77,5 +110,3 @@ uses: rendya2501/gh-actions-custom-action-sample@main
 with:
   message: "Hello from another repository!"
 ```
-
-<https://claude.ai/share/ce0c5d55-cf92-431e-a124-9263273e7356>  
