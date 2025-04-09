@@ -6,7 +6,7 @@ if (!string.IsNullOrEmpty(githubOutput))
 {
     using (StreamWriter writer = new StreamWriter(githubOutput, true))
     {
-        writer.WriteLine($"csharp_result ={result}");
+        writer.WriteLine($"csharp_result ={result} : {args[0]}");
     }
 }
 

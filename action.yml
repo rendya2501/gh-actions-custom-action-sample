@@ -14,20 +14,20 @@ outputs:
     value: ${{ steps.set-result.outputs.echo_result }}
   result:
     description: 'The result from C# code'
-    value: ${{ steps.set-result.outputs.csharp_result }}
+    value: ${{ steps.csharp.outputs.csharp_result }}
 runs:
   using: "composite"
   steps:
     - name: Process message
       id: process_message
-      run: bash ${{ github.action_path }}/entrypoint.sh "${{ inputs.message }}"
       shell: bash
+      run: bash ${{ github.action_path }}/entrypoint.sh "${{ inputs.message }}"
 
     - name: Return message
       id: set-result
+      shell: bash
       run: 'echo "echo_result=Echo Processed: ${{ inputs.message }} (hogehoge)" >> $GITHUB_OUTPUT'
       #run: echo "echo_result=${{ inputs.message }} (hogehoge)" >> $GITHUB_OUTPUT
-      shell: bash
       
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
@@ -37,4 +37,4 @@ runs:
     - name: Run C# code
       id: csharp
       shell: bash
-      run: dotnet run --project ${{ github.action_path }}/MyProject.csproj
+      run: dotnet run --project ${{ github.action_path }}/MyProject.csproj --"${{ inputs.message }}"
