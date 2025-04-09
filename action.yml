@@ -39,4 +39,4 @@ runs:
       shell: bash
       run: |
         cd ${{ github.action_path }}
-        dotnet run --project ./src/MyProject.csproj "${{ inputs.message }}"
+        dotnet run --project ./src/MyProject.csproj
