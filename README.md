@@ -77,3 +77,5 @@ uses: rendya2501/gh-actions-custom-action-sample@main
 with:
   message: "Hello from another repository!"
 ```
+
+<https://claude.ai/share/ce0c5d55-cf92-431e-a124-9263273e7356>  
