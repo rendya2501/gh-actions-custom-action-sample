@@ -12,7 +12,7 @@ outputs:
   echo_result:
     description: "Output from echo"
     value: ${{ steps.set-result.outputs.echo_result }}
-  result:
+  csharp_result:
     description: 'The result from C# code'
     value: ${{ steps.csharp.outputs.csharp_result }}
 runs:
@@ -37,4 +37,6 @@ runs:
     - name: Run C# code
       id: csharp
       shell: bash
-      run: dotnet run --project ${{ github.action_path }}/MyProject.csproj --"${{ inputs.message }}"
+      run: |
+        dotnet run --project ${{ github.action_path }}/MyProject.csproj --"${{ inputs.message }}"
+      # echo "result=${{ steps.csharp-output.outputs.result }}" >> $GITHUB_OUTPUT
