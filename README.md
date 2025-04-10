@@ -50,7 +50,7 @@ runs:
       with:
         dotnet-version: '8.0'
 
-    - name: Run C# code
+    - name: Run csharp code
       id: csharp
       shell: bash
       run: dotnet run --project ${{ github.action_path }}/MyProject.csproj "${{ inputs.message }}"
