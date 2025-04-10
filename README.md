@@ -94,7 +94,8 @@ Console.WriteLine($"Set output value: {result} {args[0]}");
 カスタムアクションの呼び出し元では、次のように出力を取得できます：
 
 - `script_result`: スクリプト内で処理された結果  
-- `echo_result`: echo によって加工されたメッセージ  
+- `echo_result`: echo によって加工されたメッセージ
+- `csharp_result`: C#で処理された結果
 
 ## 🔍 注意点
 
@@ -108,5 +109,5 @@ Console.WriteLine($"Set output value: {result} {args[0]}");
 ```yaml
 uses: rendya2501/gh-actions-custom-action-sample@main
 with:
-  message: "Hello from another repository!"
+  message: "A repository Payload"
 ```
