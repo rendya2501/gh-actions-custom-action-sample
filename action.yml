@@ -1,10 +1,12 @@
 name: "Hello World Custom Action"
 description: "Outputs a custom message"
+
 inputs:
   message:
     description: "Message to print"
     required: false
     default: "Hello World"
+    
 outputs:
   script_result:
     description: "Output from script"
@@ -15,6 +17,7 @@ outputs:
   csharp_result:
     description: 'The result from C# code'
     value: ${{ steps.csharp.outputs.csharp_result }}
+    
 runs:
   using: "composite"
   steps:
